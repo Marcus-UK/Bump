@@ -1,16 +1,18 @@
 class PlacesController < ApplicationController
 
   def index
-    @places = Place.order('created_at DESC')
+    @places = Place.all
   end
 
   def new
-    @place = Place.new
+  #  @user = User.find(params[:user_id])
+    @place = current_user.build_place
   end
 
   def create
-    @place = Place.new(place_params)
-    if @place.save
+  #  @user = User.find(params[:user_id])
+    @place = current_user.create_place(place_params)
+        if @place.save
       flash[:success] = "Place added!"
       redirect_to root_path
     else
