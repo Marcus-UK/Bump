@@ -32,12 +32,14 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rubocop'
-  gem 'rspec-rails'
-  gem 'simplecov'
-  gem 'simplecov-console'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
+  gem 'rspec-rails'
+  gem 'rspec'
+  gem 'simplecov'
+  gem 'simplecov-console'
+  gem 'rubocop'
 end
 
 group :development do
