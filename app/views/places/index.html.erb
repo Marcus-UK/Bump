@@ -1,14 +1,13 @@
-<header><h1 class="display-4">Places</h1></header>
-
-<div class="card">
-  <div class="card-block">
+<div class="places-wrapper row">
     <ul>
       <% @places.each do |place| %>
-      <li>
-        <%= link_to place.title, place_path(place) %>
+        <h4><%= link_to place.title, place_path(place) %></h4>
         visited by <strong><%= place.user.user_name %></strong>
-      </li>
+      <div class="image center-block">
+        <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{place.latitude},#{place.longitude}&markers=#{place.latitude},#{place.longitude}&zoom=15&size=320x200&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
+                      class: 'img-fluid img-rounded', alt: "#{place.title} on the map"%>
+      </div>
+    </br>
       <% end %>
     </ul>
-  </div>
 </div>
