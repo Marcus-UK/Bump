@@ -10,28 +10,8 @@
 
   <body>
 
-    <div class="navbar navbar-default">
-      <div class="container-fluid">
-        <a href="/" class="navbar-brand">Bump</a>
-        <button class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="mynavbar">
-          <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-              <li class="active"><%= link_to 'New Place', new_place_path %></li>
-              <li class="active"><%= link_to 'Find Friends', users_path %></li>
-              <li class = "active"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-            <% else %>
-              <li class="active"><%= link_to 'Login', new_user_session_path %></li>
-              <li class="active"><%= link_to 'Sign up', new_user_registration_path %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <%= render 'layouts/navbar' %>
+
     <div class="container">
     <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
