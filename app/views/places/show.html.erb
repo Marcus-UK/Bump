@@ -1,9 +1,27 @@
+<head> </head>
+
 <header><h1 class="display-4"><%= @place.title %></h1></header>
 
 <p>Address: <%= @place.address %></p>
 <p>Coordinates: <%= @place.latitude %> <%= @place.longitude %></p>
 
+<script>
 
+var origin = "E16LT";
+var lat = "<%= @place.latitude %>";
+var lon = "<%= @place.longitude %>";
+var url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + origin + "&destinations=" + lat + "+" + lon + "&mode=walking&language=en-GB=AIzaSyBgAwqYQ0cKej39qnnoiOwy1BqovI1T1Qo";
+console.log(url);
+$.support.cors = true;
+$.ajax({url : url, type : 'GET', dataType : 'json', crossDomain : true, withCredentials: true }).done(function(){
+  console.log("PASSED")
+}).fail(function() {
+  console.error("ERROR");
+})
+
+</script>
+
+<!-- </script> -->
 
 <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@place.latitude},#{@place.longitude}&markers=#{@place.latitude},#{@place.longitude}&zoom=15&size=640x400&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
               class: 'img-fluid img-rounded', alt: "#{@place.title} on the map"%>
