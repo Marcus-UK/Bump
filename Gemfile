@@ -40,6 +40,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'simplecov-console'
   gem 'rubocop'
+  gem 'pry'
 end
 
 group :development do

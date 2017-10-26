@@ -5,6 +5,7 @@ class FriendshipsController < ApplicationController
   end
 
   def create
+    binding.pry
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     if @friendship.save
       flash[:notice] = "Added friend."
@@ -17,9 +18,9 @@ class FriendshipsController < ApplicationController
 
 
   def destroy
-    @friendship = current_user.friendships.where(friend_id: params[:id]) # placeholder until we work this out
+    @friendship = current_user.friendships.find_by!(friend_id: params[:id]) # placeholder until we work this out
     @friendship.destroy
-    if @friendship.destroy
+    if @friendship.present?
       flash[:notice] = "Success: Removed friendship."
       redirect_to friendships_path
     else
