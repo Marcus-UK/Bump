@@ -1,5 +1,4 @@
 feature 'You can add friends' do
-
   scenario "User clicks to add a friend on the user index" do
     add_user
     sign_up
