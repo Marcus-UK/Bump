@@ -34,7 +34,7 @@
 
 .navbar-default {
   background-color: #fff;
-  height: 54px;
+  height: 100px;
   .navbar-nav li a {
     color: #125688;
   }
@@ -52,4 +52,19 @@
   padding: 40px;
   border: 1px solid #eeefef;
   border-radius: 3px;
+}
+
+.tinted-image {
+
+  width: 1550px;
+  height: 1000px;
+
+  background:
+    /* top, transparent green */
+    linear-gradient(
+      rgba(170, 255, 128, 0.75),
+      rgba(170, 255, 128, 0.75)
+    ),
+    /* bottom, image */
+    url(http://bit.ly/2xpJkHQ);
 }
