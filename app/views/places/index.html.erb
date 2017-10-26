@@ -1,3 +1,23 @@
+
+<body>
+<% if current_user %>
+<p>Signed in as <%= current_user.user_name %>
+<% end %>
+  <div class="places-wrapper row">
+      <% if current_user.place != nil %>
+      <ul>
+      <strong><p>Your current location</p></strong>
+        <%= current_user.place.address %>
+        <div class="image center-block">
+          <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{current_user.place.latitude},#{current_user.place.longitude}&markers=#{current_user.place.latitude},#{current_user.place.longitude}&zoom=15&size=320x200&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
+                        class: 'img-fluid img-rounded', alt: "#{current_user.place.title} on the map"%>
+      <% else %>
+          <p> <strong> Please enter your location</strong> </p>
+      <% end %>
+    </ul>
+        </div>
+    </div>
+  <div>
 <div class="places-wrapper row">
     <ul>
       <% @places.each do |place| %>
@@ -8,8 +28,11 @@
         <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{place.latitude},#{place.longitude}&markers=#{place.latitude},#{place.longitude}&zoom=15&size=320x200&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
                       class: 'img-fluid img-rounded', alt: "#{place.title} on the map"%>
       </div>
+      created at <strong><%= (place.created_at) %></strong>
     </br>
       <% end %>
       <% end %>
     </ul>
+
 </div>
+</body>

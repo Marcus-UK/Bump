@@ -14,7 +14,7 @@ class PlacesController < ApplicationController
   #  @user = User.find(params[:user_id])
     @place = current_user.create_place(place_params)
         if @place.save
-          flash[:success] = "Place added!"
+          flash[:success] = "Your location has been added!"
           redirect_to root_path
         else
           flash[:alert] = "Your new post couldn't be created!  Please check the form."
