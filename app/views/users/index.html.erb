@@ -1,9 +1,17 @@
+<h1> Find Friends</h1>
 <ul>
   <% @users.each do |user| %>
     <li><strong><%= user.user_name %></strong><br>
       <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
     </li>
-
-
-  <% end %>
+    <% end %>
 </ul>
+
+<h3> Your current friends:</h3>
+<% current_user.friends.each do |friend| %>
+  <li>
+    <%=  friend.user_name %><br>
+    <%= link_to "remove", friendship_path(friend.id), :method => :delete %>
+  </li>
+  <% end %>
+<ul>
