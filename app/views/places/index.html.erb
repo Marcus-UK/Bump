@@ -1,13 +1,13 @@
-<header><h1 class="display-4">Places</h1></header>
+<header><h1 class="display-4">Current Location</h1></header>
 
 <div class="card">
   <div class="card-block">
     <ul>
       <% @places.each do |place| %>
-      <li>
-        <%= link_to place.title, place_path(place) %>
-        visited by <strong><%= place.user.user_name %></strong>
-      </li>
+
+        <h2>Current Location: <%= link_to place.title, place_path(place) %>
+        visited by <strong> you </strong><h2>
+
       <% end %>
     </ul>
   </div>
