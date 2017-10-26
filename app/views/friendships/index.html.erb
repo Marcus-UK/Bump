@@ -1,0 +1,11 @@
+<h1>Your Friends</h1>
+<ul>
+<% current_user.friends.each do |friend| %>
+<li>
+  <%= friend.user_name %><br>
+  <%= link_to "remove", friendship_path(friend),
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+
+</li>
+<% end %>
