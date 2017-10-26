@@ -1,6 +1,7 @@
 <div class="places-wrapper row">
     <ul>
       <% @places.each do |place| %>
+        <% if place.user != current_user %>
         <h4><%= link_to place.title, place_path(place) %></h4>
         visited by <strong><%= place.user.user_name %></strong>
       <div class="image center-block">
@@ -8,6 +9,7 @@
                       class: 'img-fluid img-rounded', alt: "#{place.title} on the map"%>
       </div>
     </br>
+      <% end %>
       <% end %>
     </ul>
 </div>
