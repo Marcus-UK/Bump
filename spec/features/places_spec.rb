@@ -5,6 +5,8 @@ feature 'check places class' do
     fill_in 'place[title]', with: 'Makers Academy'
     fill_in 'place[address]', with: '50 Commercial Street'
     click_button 'Add!'
-    expect(page).to have_link('Makers Academy')
+    expect(page).to have_content('Makers Academy')
   end
 end
+
+# test should be obsolete once we are using live tracking
