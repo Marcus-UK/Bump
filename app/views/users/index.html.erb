@@ -1,12 +1,16 @@
+
 <% if current_user %>
+=======
+<h1> Find Friends</h1>
+
 <ul>
   <% @users.each do |user| %>
+    <% if user != current_user %>
     <li><strong><%= user.user_name %></strong><br>
       <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
     </li>
-
-
-  <% end %>
+    <% end %>
+    <% end %>
 </ul>
 <% else redirect_to root_path %>
 <% end %>

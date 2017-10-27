@@ -34,7 +34,7 @@
 
 .navbar-default {
   background-color: #fff;
-  height: 54px;
+  height: 100px;
   .navbar-nav li a {
     color: #125688;
   }
@@ -53,6 +53,7 @@
   border: 1px solid #eeefef;
   border-radius: 3px;
 }
+
 
 #google_canvas {
   width: 60%;
@@ -94,4 +95,11 @@ html {
 
 .alert {
   margin-bottom: 0px;
+=======
+
+
+
+body {
+ background-color: rgba(170, 255, 128, 0.75)
+
 }

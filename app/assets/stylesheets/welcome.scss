@@ -1,0 +1,33 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 300;
+}
+p {
+  text-align: center;
+}
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.tinted-image {
+
+
+  height: 800px;
+  width: 1200px;
+
+
+  background:
+    /* top, transparent green */
+   linear-gradient(
+      rgba(170, 255, 128, 0.75),
+     rgba(170, 255, 128, 0.75)
+    ),
+    /* bottom, image */
+url(http://bit.ly/2xpJkHQ);
+}
