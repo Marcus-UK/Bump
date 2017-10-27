@@ -1,38 +1,92 @@
+<head>
+</head>
 
 <body>
-<% if current_user %>
-<p>Signed in as <%= current_user.user_name %>
-<% end %>
-  <div class="places-wrapper row">
-      <% if current_user.place != nil %>
-      <ul>
-      <strong><p>Your current location</p></strong>
-        <%= current_user.place.address %>
-        <div class="image center-block">
-          <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{current_user.place.latitude},#{current_user.place.longitude}&markers=#{current_user.place.latitude},#{current_user.place.longitude}&zoom=15&size=320x200&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
-                        class: 'img-fluid img-rounded', alt: "#{current_user.place.title} on the map"%>
-      <% else %>
-          <p> <strong> Please enter your location</strong> </p>
-      <% end %>
-    </ul>
-        </div>
-    </div>
-  <div>
-<div class="places-wrapper row">
-    <ul>
-      <% @places.each do |place| %>
-        <% if place.user != current_user %>
-        <h4><%= link_to place.title, place_path(place) %></h4>
-        visited by <strong><%= place.user.user_name %></strong>
-      <div class="image center-block">
-        <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{place.latitude},#{place.longitude}&markers=#{place.latitude},#{place.longitude}&zoom=15&size=320x200&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
-                      class: 'img-fluid img-rounded', alt: "#{place.title} on the map"%>
+  <% if current_user %>
+  <p>Signed in as <%= current_user.user_name %>
+  <% end %>
+  <% if current_user %>
+    <div class="places-wrapper row">
+        <% if current_user %>
+            <% if current_user.place != nil %>
+        <ul>
+        <p>Your current location: <strong><%= current_user.place.address %></strong>
+          <div class="image center-block">
+           <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{current_user.place.latitude},#{current_user.place.longitude}&markers=#{current_user.place.latitude},#{current_user.place.longitude}&zoom=15&size=320x200&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
+                          class: 'img-fluid img-rounded', alt: "#{current_user.place.title} on the map"%>
+        <% else %>
+            <p> <strong> Please enter your location </strong> </p>
+        <% end %>
+        <% end %>
+      </ul>
+          </div>
       </div>
-      created at <strong><%= (place.created_at) %></strong>
-    </br>
-      <% end %>
-      <% end %>
-    </ul>
-
-</div>
+    <div>
+  <div class="places-wrapper row">
+      <ul>
+        <% @places.each do |place| %>
+          <% if place.user != current_user %>
+          <h4><%= link_to place.title, place_path(place) %></h4>
+          visited by <strong><%= place.user.user_name %></strong>
+        <div class="image center-block">
+          <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{place.latitude},#{place.longitude}&markers=#{place.latitude},#{place.longitude}&zoom=15&size=320x200&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
+                        class: 'img-fluid img-rounded', alt: "#{place.title} on the map"%>
+        </div>
+        updated at <strong><%= place.created_at %></strong>
+      </br>
+        <% end %>
+        <% end %>
+      </ul>
+  </div>
 </body>
+<% else %>
+<html>
+<head>
+  <style>
+  h1 {
+  color: white;
+  text-align: center;
+  font-size: 300;
+}
+p {
+  text-align: center;
+}
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.tinted-image {
+
+
+  height: 800px;
+  width: 1200px;
+
+
+  background:
+    /* top, transparent green */
+   linear-gradient(
+      rgba(170, 255, 128, 0.75),
+     rgba(170, 255, 128, 0.75)
+    ),
+    /* bottom, image */
+url(http://bit.ly/2xpJkHQ);
+width:100%
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="tinted-image">
+    <font color="white">
+
+    <h1 text-align="center"><strong><br><font size=200>Welcome to Bump</font><strong></h1>
+    <p text-align="center"><a href=/users/sign_up>Sign up</a> to start finding your friends!</p>
+</div>
+
+</font>
+</body>
+</html>
+<% end %>
