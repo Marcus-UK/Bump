@@ -1,4 +1,4 @@
-
+<% if current_user %>
 <body>
 <% if current_user %>
 <p>Signed in as <%= current_user.user_name %>
@@ -9,10 +9,12 @@
       <strong><p>Your current location</p></strong>
         <%= current_user.place.address %>
         <div class="image center-block">
+
           <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{current_user.place.latitude},#{current_user.place.longitude}&markers=#{current_user.place.latitude},#{current_user.place.longitude}&zoom=15&size=320x200&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
                         class: 'img-fluid img-rounded', alt: "#{current_user.place.title} on the map"%>
       <% else %>
           <p> <strong> Please enter your location</strong> </p>
+          <img id="demo" />
       <% end %>
     </ul>
         </div>
@@ -35,4 +37,40 @@
     </ul>
 
 </div>
+
+
+<script>
+
+  $.ajax({url:"https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCI8JtGcICx9w3I8R35csFEGfYEtWLPJI0", type:"POST"})
+      var x = document.getElementById("demo");
+      function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+      function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+      }
+
+
+ </script>
 </body>
+
+<% else %>
+<html>
+<head>
+</head>
+<body>
+<font color="white">
+
+<h1 text-align="center"><strong><br><font size=200>Welcome to Bump</font><strong></h1>
+<p text-align="center"><a href=/users/sign_up>Sign up</a> to start finding your friends!</p>
+
+</font>
+</body>
+</html>
+
+<% end %>
