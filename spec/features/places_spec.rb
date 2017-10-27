@@ -7,7 +7,6 @@ feature 'check places class' do
     click_button 'Add!'
 
     expect(page).to have_content('50 Commercial Street')
-=======
     expect(page).to have_content('Makers Academy')
 
   end
