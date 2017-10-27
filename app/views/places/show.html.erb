@@ -1,21 +1,11 @@
 <header><h1 class="display-4"><%= @place.title %></h1></header>
 
-<% if current_user %>
-
 <p>Address: <%= @place.address %></p>
 <p>Coordinates: <%= @place.latitude %> <%= @place.longitude %></p>
 <p>Visited by: <strong><%= @place.user.user_name %></strong>  <p>
 <p> Distance from you: <p id="distance"></p></p>
 <p> Walk to <%= @place.user.user_name %> in <p id="duration">!</p></p>
-
-<div id="map"><%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@place.latitude},#{@place.longitude}&markers=#{@place.latitude},#{@place.longitude}&zoom=15&size=640x400&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
-              class: 'img-fluid img-rounded', alt: "#{@place.title} on the map" %></div>
-<% else %>
-  <strong><p>Please log in to see details!</p></strong>
-<% end %>
-
 <script>
-  '<% if current_user != nil %>'
 
   var origin = "<%= current_user.place.address %>";
   var lat = "<%= @place.latitude %>";
@@ -38,5 +28,7 @@ var response =  $.ajax({url : url, type : 'GET', dataType : 'json', crossDomain 
     document.getElementById("distance").innerHTML = distance;
     document.getElementById("duration").innerHTML = duration;
 });
-'<% end %>'
 </script>
+
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@place.latitude},#{@place.longitude}&markers=#{@place.latitude},#{@place.longitude}&zoom=15&size=640x400&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
+              class: 'img-fluid img-rounded', alt: "#{@place.title} on the map"%>
