@@ -1,5 +1,5 @@
 feature 'You can add friends' do
-  scenario "User clicks to add a friend on the user index" do
+  scenario 'User clicks to add a friend on the user index' do
     add_user
     sign_up
     visit('/users')
@@ -10,9 +10,8 @@ feature 'You can add friends' do
   end
 end
 
-
 feature 'You can remove friends' do
-  scenario "User clicks to add a friend on the user index" do
+  scenario 'User clicks to add a friend on the user index' do
     add_user
     sign_up
     click_link 'Find Friends!'
