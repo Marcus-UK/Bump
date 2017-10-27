@@ -10,8 +10,7 @@
         <% if current_user %>
             <% if current_user.place != nil %>
         <ul>
-        <strong><p>Your current location</p></strong>
-          <%= current_user.place.address %>
+        <p>Your current location: <strong><%= current_user.place.address %></strong>
           <div class="image center-block">
            <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{current_user.place.latitude},#{current_user.place.longitude}&markers=#{current_user.place.latitude},#{current_user.place.longitude}&zoom=15&size=320x200&key=AIzaSyCehqrbchqlAM6R83HqL1NDvdrw7kCXsss",
                           class: 'img-fluid img-rounded', alt: "#{current_user.place.title} on the map"%>
@@ -76,25 +75,6 @@ url(http://bit.ly/2xpJkHQ);
 width:100%
 }
 
-#over
-{
-    position:absolute;
-    width:100%;
-    height:100%;
-    text-align: center; /*handles the horizontal centering*/
-}
-/*handles the vertical centering*/
-.Centerer
-{
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-}
-.Centered
-{
-    display: inline-block;
-    vertical-align: middle;
-}
 
   </style>
 </head>
@@ -104,7 +84,6 @@ width:100%
 
     <h1 text-align="center"><strong><br><font size=200>Welcome to Bump</font><strong></h1>
     <p text-align="center"><a href=/users/sign_up>Sign up</a> to start finding your friends!</p>
-    <div id="over"><img src=http://bit.ly/2i7laeE width="400";></div>
 </div>
 
 </font>

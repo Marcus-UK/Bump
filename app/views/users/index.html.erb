@@ -1,3 +1,4 @@
+<% if current_user %>
 <ul>
   <% @users.each do |user| %>
     <li><strong><%= user.user_name %></strong><br>
@@ -7,3 +8,5 @@
 
   <% end %>
 </ul>
+<% else redirect_to root_path %>
+<% end %>
