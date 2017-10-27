@@ -8,8 +8,17 @@
   end
 
   def add_user
-    User.create(email: 'tester@test.com',
-              user_name: 'Tester',
-              password: '12345',
-              password_confirmation: '12345')
+    visit '/users/sign_up'
+    fill_in 'user[email]', with: 'test@test.com'
+    fill_in 'user[user_name]', with: 'Testy mcTestface'
+    fill_in 'user[password]', with:'1233456'
+    fill_in 'user[password_confirmation]', with:'1233456'
+    click_button 'Sign up'
+    click_link 'Logout'
+
+
+  #   User.create(email: 'tester@test.com',
+  #             user_name: 'Tester',
+  #             password: '12345',
+  #             password_confirmation: '12345')
   end

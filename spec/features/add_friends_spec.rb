@@ -1,9 +1,10 @@
 feature 'You can add friends' do
   scenario "User clicks to add a friend on the user index" do
-    # add_user
+    add_user
     sign_up
     visit('/users')
     click_link 'Find Friends!'
+    save_and_open_page
     click_link 'Add Friend'
     expect(page).to have_content 'Added friend.'
   end
